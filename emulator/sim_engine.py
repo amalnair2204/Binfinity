@@ -44,9 +44,15 @@ class SimEngine:
     async def run(self) -> None:
         await self._db.connect()
         logger.info("Simulation started")
-        while True:
-            await self._tick()
-            await asyncio.sleep(self.tick_interval)
+        try:
+            while True:
+                try:
+                    await self._tick()
+                except Exception as exc:
+                    logger.error(f"Tick error: {exc}")
+                await asyncio.sleep(self.tick_interval)
+        finally:
+            await self._db.close()
 
     async def _tick(self) -> None:
         tasks = [
@@ -105,7 +111,7 @@ class SimEngine:
         tmp = Path("data/bin_states.json.tmp")
         final = Path("data/bin_states.json")
         tmp.write_text(json.dumps(snapshot))
-        tmp.rename(final)
+        os.replace(tmp, final)
 
 
 async def _main() -> None:
