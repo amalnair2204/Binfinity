@@ -88,7 +88,8 @@ class TelemetryDB:
             self._db = None
 
     async def insert(self, packet: TelemetryPacket) -> None:
-        assert self._db is not None, "Call connect() first"
+        if self._db is None:
+            raise RuntimeError("Call connect() first")
         await self._db.execute(
             _INSERT,
             (
@@ -107,13 +108,15 @@ class TelemetryDB:
         await self._db.commit()
 
     async def count(self) -> int:
-        assert self._db is not None
+        if self._db is None:
+            raise RuntimeError("Call connect() first")
         async with self._db.execute("SELECT COUNT(*) FROM telemetry") as cur:
             row = await cur.fetchone()
             return row[0]
 
     async def fetch_all(self) -> list[dict]:
-        assert self._db is not None
+        if self._db is None:
+            raise RuntimeError("Call connect() first")
         async with self._db.execute("SELECT * FROM telemetry ORDER BY id") as cur:
             rows = await cur.fetchall()
             return [dict(r) for r in rows]
