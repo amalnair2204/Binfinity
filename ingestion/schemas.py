@@ -23,8 +23,8 @@ class TelemetryPacket(BaseModel):
 class BinState(BaseModel):
     bin_id: str
     last_updated: datetime
-    fill_pct: float
-    fill_liters: float
+    fill_pct: float = Field(ge=0.0, le=100.0)
+    fill_liters: float = Field(ge=0.0)
     status: Literal[
         "operational",
         "tipped",
@@ -34,7 +34,7 @@ class BinState(BaseModel):
         "pending_collection",
         "emptied",
     ]
-    battery_mv: int
-    consecutive_fault_ticks: int = 0
+    battery_mv: int = Field(ge=0)
+    consecutive_fault_ticks: int = Field(default=0, ge=0)
     flagged_for_collection: bool = False
     last_emptied: Optional[datetime] = None

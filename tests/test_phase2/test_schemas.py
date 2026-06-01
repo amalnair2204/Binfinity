@@ -128,3 +128,31 @@ def test_last_emptied_optional():
     data["last_emptied"] = None
     s = BinState(**data)
     assert s.last_emptied is None
+
+
+def test_bin_state_fill_pct_above_100_raises():
+    data = valid_state_data()
+    data["fill_pct"] = 100.1
+    with pytest.raises(ValidationError):
+        BinState(**data)
+
+
+def test_bin_state_fill_pct_below_0_raises():
+    data = valid_state_data()
+    data["fill_pct"] = -0.1
+    with pytest.raises(ValidationError):
+        BinState(**data)
+
+
+def test_bin_state_negative_battery_raises():
+    data = valid_state_data()
+    data["battery_mv"] = -1
+    with pytest.raises(ValidationError):
+        BinState(**data)
+
+
+def test_bin_state_negative_fault_ticks_raises():
+    data = valid_state_data()
+    data["consecutive_fault_ticks"] = -1
+    with pytest.raises(ValidationError):
+        BinState(**data)
