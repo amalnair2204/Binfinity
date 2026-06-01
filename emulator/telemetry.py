@@ -19,7 +19,7 @@ class TelemetryPacket(BaseModel):
     temp_c: float
     event_type: Literal["scheduled", "tip_alert", "overflow_warning", "emptied", "spike"]
 
-def build_packet(bin_node: BinNode, sim_dt: datetime, event_type: str) -> TelemetryPacket:
+def build_packet(bin_node: BinNode, sim_dt: datetime, event_type: Literal["scheduled", "tip_alert", "overflow_warning", "emptied", "spike"]) -> TelemetryPacket:
     ts = sim_dt if sim_dt.tzinfo else sim_dt.replace(tzinfo=timezone.utc)
     # NOTE: rssi_dbm and temp_c use fixed stub values here; Task 4 will replace
     # with realistic random sampling. Using fixed values avoids interference with
@@ -34,5 +34,5 @@ def build_packet(bin_node: BinNode, sim_dt: datetime, event_type: str) -> Teleme
         battery_mv=bin_node.battery_mv,
         rssi_dbm=-85,
         temp_c=30.0,
-        event_type=event_type,  # type: ignore[arg-type]
+        event_type=event_type,
     )

@@ -20,7 +20,6 @@ from emulator.bin_model import (
 
 MONDAY_6AM = datetime(2025, 1, 6, 6, 0, tzinfo=timezone.utc)   # morning peak
 MONDAY_3AM = datetime(2025, 1, 6, 3, 0, tzinfo=timezone.utc)   # night
-SATURDAY_NOON = datetime(2025, 1, 11, 12, 0, tzinfo=timezone.utc)  # weekend
 
 
 def make_bin(**kwargs) -> BinNode:
@@ -136,6 +135,12 @@ def test_wake_interval_normal():
 def test_wake_interval_low_battery():
     b = make_bin(battery_mv=BATTERY_CRITICAL_MV - 1)
     assert b.wake_interval_minutes == 60
+
+
+def test_wake_interval_at_exact_critical_mv():
+    """At exactly 3200mV (not below), interval should be 30 (normal), not 60."""
+    b = make_bin(battery_mv=BATTERY_CRITICAL_MV)
+    assert b.wake_interval_minutes == 30
 
 
 def test_battery_does_not_go_below_zero():
@@ -272,6 +277,12 @@ def test_emptying_clears_collection_flag():
     b = make_bin(current_fill_pct=90.0, marked_for_collection=True)
     b.apply_emptying(MONDAY_6AM)
     assert not b.marked_for_collection
+
+
+def test_emptying_clears_tipped_flag():
+    b = make_bin(current_fill_pct=90.0, tipped=True)
+    b.apply_emptying(MONDAY_6AM)
+    assert not b.tipped
 
 
 # ── collection flag ───────────────────────────────────────────────────────────
