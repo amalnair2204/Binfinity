@@ -156,3 +156,17 @@ def test_bin_state_negative_fault_ticks_raises():
     data["consecutive_fault_ticks"] = -1
     with pytest.raises(ValidationError):
         BinState(**data)
+
+
+def test_bin_state_negative_fill_liters_raises():
+    data = valid_state_data()
+    data["fill_liters"] = -0.1
+    with pytest.raises(ValidationError):
+        BinState(**data)
+
+
+def test_packet_negative_fill_liters_raises():
+    data = valid_packet_data()
+    data["fill_liters"] = -0.1
+    with pytest.raises(ValidationError):
+        TelemetryPacket(**data)

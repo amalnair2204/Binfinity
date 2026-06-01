@@ -11,7 +11,7 @@ class TelemetryPacket(BaseModel):
     bin_id: str
     timestamp: datetime
     fill_pct: float = Field(ge=0.0, le=100.0)
-    fill_liters: float
+    fill_liters: float = Field(ge=0.0)
     tipped: bool
     sensor_fault: bool
     battery_mv: int
