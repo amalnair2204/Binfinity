@@ -68,7 +68,10 @@ async def telemetry_stream():
         try:
             while True:
                 packet = await queue.get()
-                yield f"data: {packet.model_dump_json()}\n\n"
+                try:
+                    yield f"data: {packet.model_dump_json()}\n\n"
+                except Exception:
+                    pass
         except asyncio.CancelledError:
             pass
         finally:
@@ -91,6 +94,8 @@ async def collect_bin(bin_id: str) -> dict:
 async def stats() -> dict:
     engine = _require_engine()
     bins = list(engine.bins.values())
+    if not bins:
+        return {"total_bins": 0, "avg_fill_pct": 0.0, "bins_over_80": 0, "faulted_count": 0}
     total = len(bins)
     return {
         "total_bins": total,

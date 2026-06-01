@@ -133,3 +133,34 @@ def test_sim_speed_low_value_does_not_crash():
 def test_any_endpoint_invalid_bin_id_returns_404():
     assert client.get("/bins/INVALID").status_code == 404
     assert client.post("/bins/INVALID/collect").status_code == 404
+
+
+# ── GET /stats (empty fleet guard) ───────────────────────────────────────────
+
+def test_stats_empty_fleet():
+    engine_mock = MagicMock()
+    engine_mock.bins = {}
+    set_engine(engine_mock)
+    r = client.get("/stats")
+    assert r.status_code == 200
+    data = r.json()
+    assert data["total_bins"] == 0
+    assert data["avg_fill_pct"] == 0.0
+    # restore the default engine (the autouse fixture will restore it for next test)
+    set_engine(None)
+
+
+# ── GET /telemetry/stream ─────────────────────────────────────────────────────
+
+@pytest.mark.anyio
+async def test_telemetry_stream_adds_queue_to_subscribers(engine):
+    # Call the endpoint function directly: it returns immediately with a
+    # StreamingResponse (the async generator is lazy) so we can inspect
+    # the media_type and verify the queue was registered without blocking.
+    from emulator.api import telemetry_stream
+    from starlette.responses import StreamingResponse
+
+    resp = await telemetry_stream()
+    assert isinstance(resp, StreamingResponse)
+    assert resp.media_type == "text/event-stream"
+    assert len(engine.sse_subscribers) == 1
