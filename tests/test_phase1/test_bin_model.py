@@ -182,10 +182,12 @@ def test_volatile_spike_does_not_set_sensor_fault():
 def test_sensor_blockage_triggers_sensor_fault():
     """When fault triggers, fill=100.0 and sensor_fault=True."""
     b = make_bin(current_fill_pct=50.0)
-    # random calls: randint(battery)=5, random[tip]=0.5(miss), random[fault]=0.001(hit),
-    # randint(fault_duration)=2
-    with patch("random.randint", side_effect=[5, 2]), \
-         patch("random.random", side_effect=[0.5, 0.001]):
+    # random calls: randint(battery)=5, randint(fault_duration)=2,
+    # randint(rssi_dbm in build_packet)=-85
+    # random calls: random[tip]=0.5(miss), random[fault]=0.001(hit)
+    with patch("random.randint", side_effect=[5, 2, -85]), \
+         patch("random.random", side_effect=[0.5, 0.001]), \
+         patch("random.uniform", return_value=30.0):
         packets = b.tick(MONDAY_6AM)
     assert b.sensor_fault
     assert b.current_fill_pct == 100.0
