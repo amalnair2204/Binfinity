@@ -58,6 +58,7 @@ def test_spike_fill_capped_at_100():
          patch("random.uniform", return_value=70.0):
         b.tick(MONDAY_6AM)
     assert b.current_fill_pct == 100.0
+    assert b.marked_for_collection  # spike past 85% should flag for collection
 
 
 # ── sensor blockage ───────────────────────────────────────────────────────────
@@ -101,6 +102,16 @@ def test_blockage_faulted_bin_not_flagged_for_collection():
          patch("random.random", return_value=0.5):
         b.tick(MONDAY_6AM)
     assert not b.marked_for_collection
+
+
+def test_non_faulted_bin_at_100pct_is_flagged():
+    """Non-faulted bin reaching 100% during spike must be flagged for collection."""
+    b = make_bin(current_fill_pct=10.0)
+    with patch("random.randint", return_value=5), \
+         patch("random.random", side_effect=[0.5, 0.5, 0.001]), \
+         patch("random.uniform", return_value=90.0):   # 10 + 90 = 100, clamped
+        b.tick(MONDAY_6AM)
+    assert b.marked_for_collection
 
 
 # ── tip-over ──────────────────────────────────────────────────────────────────
