@@ -18,6 +18,24 @@ from emulator.telemetry import TelemetryDB, TelemetryPacket
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
+SIM_DT = datetime(2025, 1, 6, 6, 0, tzinfo=timezone.utc)
+
+
+def _fake_packet(bin_id="BIN-0001", fill_pct=90.0) -> TelemetryPacket:
+    return TelemetryPacket(
+        bin_id=bin_id,
+        timestamp=SIM_DT,
+        fill_pct=fill_pct,
+        fill_liters=fill_pct / 100.0 * 120.0,
+        tipped=False,
+        sensor_fault=False,
+        battery_mv=4000,
+        rssi_dbm=-85,
+        temp_c=30.0,
+        event_type="scheduled",
+    )
+
+
 def _bin_data(bin_id="BIN-0001", fill_pct=10.0) -> dict:
     return dict(
         bin_id=bin_id,
@@ -90,22 +108,28 @@ async def test_process_bin_returns_packets(engine):
 @pytest.mark.asyncio
 async def test_process_bin_triggers_emptying_when_flagged_and_over_85(engine):
     bin_node = engine.bins["BIN-0001"]
-    bin_node.current_fill_pct = 90.0
     bin_node.marked_for_collection = True
-    packets = await engine._process_bin(bin_node)
-    # Should include at least the tick packet plus an emptied packet
-    event_types = {p.event_type for p in packets}
-    assert "emptied" in event_types
+    bin_node.current_fill_pct = 90.0
+
+    with patch.object(bin_node, "tick", return_value=[_fake_packet(fill_pct=90.0)]):
+        packets = await engine._process_bin(bin_node)
+
+    assert len(packets) == 2  # tick packet + emptied packet
+    assert packets[-1].event_type == "emptied"
+    assert bin_node.current_fill_pct == 0.0
 
 
 @pytest.mark.asyncio
 async def test_process_bin_no_emptying_below_85(engine):
     bin_node = engine.bins["BIN-0001"]
+    bin_node.marked_for_collection = False
     bin_node.current_fill_pct = 50.0
-    bin_node.marked_for_collection = True
-    packets = await engine._process_bin(bin_node)
-    event_types = {p.event_type for p in packets}
-    assert "emptied" not in event_types
+
+    with patch.object(bin_node, "tick", return_value=[_fake_packet(fill_pct=50.0)]):
+        packets = await engine._process_bin(bin_node)
+
+    assert len(packets) == 1
+    assert packets[0].fill_pct == 50.0
 
 
 @pytest.mark.asyncio
@@ -133,6 +157,9 @@ async def test_write_snapshot_creates_file(engine, tmp_path):
         with patch("emulator.sim_engine.os.replace") as mock_replace:
             await engine._write_snapshot()
             mock_replace.assert_called_once()
+            tmp_file.write_text.assert_called_once()
+            written_content = tmp_file.write_text.call_args[0][0]
+            assert "BIN-0001" in written_content
 
 
 @pytest.mark.asyncio
@@ -187,10 +214,14 @@ async def test_tick_fans_out_to_sse_subscribers(engine):
     queue = asyncio.Queue()
     engine.sse_subscribers.add(queue)
 
-    with patch.object(engine, "_write_snapshot", new_callable=AsyncMock):
+    fake_pkt = _fake_packet()
+    with patch.object(engine, "_process_bin", return_value=[fake_pkt]), \
+         patch.object(engine, "_write_snapshot", new_callable=AsyncMock):
         await engine._tick()
 
     assert not queue.empty()
+    pkt = queue.get_nowait()
+    assert pkt.bin_id == "BIN-0001"
 
 
 @pytest.mark.asyncio
