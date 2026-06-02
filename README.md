@@ -46,3 +46,43 @@ Emulator starts at `http://localhost:8000`. Telemetry streams to:
 ```bash
 pytest tests/test_phase1/ --cov=emulator --cov-report=term-missing
 ```
+
+---
+
+## Phase 2: Cloud Ingestion Pipeline
+
+### Prerequisites
+
+```bash
+docker-compose -f infra/docker-compose.yml up -d   # TimescaleDB + Redis
+python -m emulator.sim_engine                       # Phase 1 must be running first
+```
+
+### Run
+
+```bash
+python -m ingestion.worker
+```
+
+Ingestion API available at `http://localhost:8001`.
+
+### API
+
+| Endpoint | Description |
+|----------|-------------|
+| `GET /health` | Worker + DB + Redis status |
+| `GET /bins` | All bins current BinState |
+| `GET /bins/{bin_id}` | Single bin state |
+| `GET /bins/{bin_id}/history?limit=N` | Last N telemetry rows |
+| `GET /fleet/stats` | Counts per status category |
+| `GET /fleet/flagged` | Bins flagged for collection (fill desc) |
+| `GET /fleet/critical` | Bins fill ≥ 85% or tipped |
+| `POST /bins/{bin_id}/acknowledge` | Ops override — clear fault/tip |
+
+### Phase 2 Tests
+
+```bash
+pytest tests/test_phase2/ --cov=ingestion --cov-report=term-missing
+```
+
+> `test_db.py` requires a live PostgreSQL instance (`DATABASE_URL` in `.env`).
