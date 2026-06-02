@@ -31,7 +31,7 @@ db: IngestionDB | None = None
 cache: BinStateCache | None = None
 packets_processed: int = 0
 worker_running: bool = False
-_batch_queue: asyncio.Queue[TelemetryPacket] = asyncio.Queue()
+_batch_queue: asyncio.Queue[TelemetryPacket] | None = None  # initialized in _main()
 _bin_states: dict[str, BinState] = {}   # in-memory fallback for API when Redis slow
 
 
@@ -87,6 +87,8 @@ async def _process_packet(packet: TelemetryPacket) -> None:
     _bin_states[packet.bin_id] = new_state
 
     # Immediate writes (state consistency)
+    if db is None or cache is None:
+        raise RuntimeError("Worker not initialized — call _main() first")
     await db.upsert_bin_state(new_state)
     await cache.set_bin_state(new_state)
 
@@ -97,22 +99,30 @@ async def _process_packet(packet: TelemetryPacket) -> None:
         logger.warning(f"SPILL INCIDENT — {packet.bin_id} at {current.fill_pct:.1f}%")
 
     # Enqueue for batch telemetry insert
-    await _batch_queue.put(packet)
+    if _batch_queue is not None:
+        await _batch_queue.put(packet)
 
 
 async def _batch_flusher() -> None:
     while True:
         await asyncio.sleep(_BATCH_FLUSH_SECONDS)
+        if _batch_queue is None or db is None:
+            continue
         batch: list[TelemetryPacket] = []
-        while not _batch_queue.empty():
-            batch.append(_batch_queue.get_nowait())
+        while True:
+            try:
+                batch.append(_batch_queue.get_nowait())
+            except asyncio.QueueEmpty:
+                break
         if batch:
             await db.bulk_insert_telemetry(batch)
             logger.debug(f"Flushed {len(batch)} telemetry rows to DB")
 
 
 async def _main() -> None:
-    global db, cache
+    global db, cache, _batch_queue
+
+    _batch_queue = asyncio.Queue()
 
     db = IngestionDB(_DATABASE_URL)
     await db.connect()
