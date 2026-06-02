@@ -1,7 +1,7 @@
 """Ingestion pipeline FastAPI server. Reads from Redis for fast queries."""
 from __future__ import annotations
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from loguru import logger
 
 app = FastAPI(title="Binfinity Ingestion API", version="1.0.0")
@@ -46,10 +46,12 @@ async def get_bin(bin_id: str) -> dict:
 # ── GET /bins/{bin_id}/history ────────────────────────────────────────────────
 
 @app.get("/bins/{bin_id}/history")
-async def get_history(bin_id: str, limit: int = 100) -> list[dict]:
+async def get_history(bin_id: str, limit: int = Query(default=100, ge=1)) -> list[dict]:
     w = _get_worker()
     if bin_id not in w._bin_states:
         raise HTTPException(status_code=404, detail=f"Bin {bin_id!r} not found")
+    if w.db is None:
+        raise HTTPException(status_code=503, detail="Worker not initialized")
     rows = await w.db.get_bin_history(bin_id, limit=limit)
     return rows
 
@@ -111,6 +113,8 @@ async def acknowledge_bin(bin_id: str) -> dict:
         new_state.status = "operational"
         new_state.consecutive_fault_ticks = 0
         w._bin_states[bin_id] = new_state
+        if w.db is None:
+            raise HTTPException(status_code=503, detail="Worker not initialized")
         await w.db.upsert_bin_state(new_state)
         if w.cache:
             await w.cache.set_bin_state(new_state)
