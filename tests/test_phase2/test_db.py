@@ -1,7 +1,7 @@
 """
 asyncpg database layer tests.
 Requires live PostgreSQL. Set TEST_DATABASE_URL env var.
-Tests use transactions that rollback — no persistent state.
+Tests clean up via DELETE statements after each test.
 """
 from __future__ import annotations
 

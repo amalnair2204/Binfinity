@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any
 
 import asyncpg
 from loguru import logger
@@ -74,7 +73,7 @@ class IngestionDB:
                     "SELECT create_hypertable('telemetry', 'time', if_not_exists => TRUE)"
                 )
                 logger.info("TimescaleDB hypertable confirmed")
-            except Exception:
+            except asyncpg.PostgresError:
                 logger.warning("create_hypertable skipped — running on plain PostgreSQL")
         logger.info("Database pool ready")
 
@@ -83,6 +82,8 @@ class IngestionDB:
             await self._pool.close()
 
     async def bulk_insert_telemetry(self, packets: list[TelemetryPacket]) -> None:
+        if self._pool is None:
+            raise RuntimeError("Database not connected — call connect() first")
         if not packets:
             return
         rows = [
@@ -101,15 +102,21 @@ class IngestionDB:
             for p in packets
         ]
         async with self._pool.acquire() as conn:
-            await conn.executemany(
-                """INSERT INTO telemetry
-                   (time, bin_id, fill_pct, fill_liters, tipped, sensor_fault,
-                    battery_mv, rssi_dbm, temp_c, event_type)
-                   VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)""",
-                rows,
-            )
+            try:
+                await conn.executemany(
+                    """INSERT INTO telemetry
+                       (time, bin_id, fill_pct, fill_liters, tipped, sensor_fault,
+                        battery_mv, rssi_dbm, temp_c, event_type)
+                       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)""",
+                    rows,
+                )
+            except Exception as exc:
+                logger.error(f"bulk_insert_telemetry failed for {len(rows)} rows: {exc}")
+                raise
 
     async def upsert_bin_state(self, state: BinState) -> None:
+        if self._pool is None:
+            raise RuntimeError("Database not connected — call connect() first")
         async with self._pool.acquire() as conn:
             await conn.execute(
                 _UPSERT_BIN_STATE,
@@ -127,6 +134,8 @@ class IngestionDB:
     async def log_spill_incident(
         self, bin_id: str, occurred_at: datetime, fill_at_spill: float
     ) -> None:
+        if self._pool is None:
+            raise RuntimeError("Database not connected — call connect() first")
         async with self._pool.acquire() as conn:
             await conn.execute(
                 "INSERT INTO spill_incidents (bin_id, occurred_at, fill_at_spill) VALUES ($1,$2,$3)",
@@ -136,6 +145,8 @@ class IngestionDB:
             )
 
     async def get_bin_history(self, bin_id: str, limit: int = 100) -> list[dict]:
+        if self._pool is None:
+            raise RuntimeError("Database not connected — call connect() first")
         async with self._pool.acquire() as conn:
             rows = await conn.fetch(
                 "SELECT * FROM telemetry WHERE bin_id=$1 ORDER BY time DESC LIMIT $2",
