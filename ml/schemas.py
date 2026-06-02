@@ -38,6 +38,16 @@ class FeatureVector(BaseModel):
     spike_count_24h: int = 0
     fault_count_24h: int = 0
     is_volatile: bool = False   # rolling_std_6h > 8.0
+    # Exogenous features (Phase 5 — populated by ExogenousInjector)
+    weather_fill_multiplier: float = 1.0
+    outdoor_activity_score: float = 0.5
+    is_raining: bool = False
+    forecast_rain_6h: bool = False
+    zone_congestion_ratio: float = 0.7
+    estimated_truck_delay_min: float = 0.0
+    calendar_fill_multiplier: float = 1.0
+    days_until_next_high_impact: int = 30
+    is_holiday_today: bool = False
 
 
 class PredictionResult(BaseModel):

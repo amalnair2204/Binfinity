@@ -1,0 +1,137 @@
+# Dubai / UAE city calendar — exogenous fill-rate event multipliers
+# multiplier: fill-rate scale factor (1.0 = neutral, >1.0 = higher fill expected)
+#
+# Three formats supported:
+#   date:  YYYY-MM-DD          — single fixed date
+#   start/end: YYYY-MM-DD      — inclusive date range
+#   month + day                — recurring annual (matches any year)
+
+events:
+
+  # ─── UAE Public Holidays (fixed Gregorian) ────────────────────────────
+
+  - name: "UAE National Day (Eve)"
+    month: 12
+    day: 1
+    multiplier: 1.8
+    note: "Public celebrations, outdoor gatherings"
+
+  - name: "UAE National Day"
+    month: 12
+    day: 2
+    multiplier: 2.0
+    note: "Peak public holiday — fireworks, events, highest foot traffic"
+
+  - name: "New Year's Eve"
+    month: 12
+    day: 31
+    multiplier: 2.0
+    note: "Outdoor celebrations, restaurants, public-space events"
+
+  - name: "New Year's Day"
+    month: 1
+    day: 1
+    multiplier: 1.7
+    note: "High residual waste from New Year's Eve"
+
+  - name: "UAE Commemoration Day"
+    month: 11
+    day: 30
+    multiplier: 1.3
+    note: "National observance day"
+
+  # ─── UAE Public Holidays (floating Islamic — 2025) ────────────────────
+
+  - name: "Eid al-Fitr 2025"
+    start: "2025-03-30"
+    end: "2025-04-01"
+    multiplier: 1.9
+    note: "End of Ramadan — peak family gatherings, outdoor activities"
+
+  - name: "Eid al-Adha 2025"
+    start: "2025-06-06"
+    end: "2025-06-09"
+    multiplier: 1.9
+    note: "Sacrifice festival — elevated organic and packaging waste"
+
+  - name: "Islamic New Year 2025"
+    date: "2025-06-27"
+    multiplier: 1.4
+
+  - name: "Prophet's Birthday 2025"
+    date: "2025-09-04"
+    multiplier: 1.3
+
+  # ─── UAE Public Holidays (floating Islamic — 2026) ────────────────────
+
+  - name: "Eid al-Fitr 2026"
+    start: "2026-03-19"
+    end: "2026-03-21"
+    multiplier: 1.9
+
+  - name: "Eid al-Adha 2026"
+    start: "2026-05-26"
+    end: "2026-05-29"
+    multiplier: 1.9
+
+  - name: "Islamic New Year 2026"
+    date: "2026-06-17"
+    multiplier: 1.4
+
+  - name: "Prophet's Birthday 2026"
+    date: "2026-08-25"
+    multiplier: 1.3
+
+  # ─── Ramadan (reduced daytime activity; Iftar surge at sunset) ────────
+
+  - name: "Ramadan 2025"
+    start: "2025-03-01"
+    end: "2025-03-29"
+    multiplier: 1.3
+    note: "Iftar-time surge offsets daytime reduction"
+
+  - name: "Ramadan 2026"
+    start: "2026-02-18"
+    end: "2026-03-18"
+    multiplier: 1.3
+
+  # ─── Major Recurring Annual Events ────────────────────────────────────
+
+  - name: "Dubai Shopping Festival 2025"
+    start: "2025-01-03"
+    end: "2025-02-02"
+    multiplier: 1.5
+    note: "Month-long retail festival — elevated mall and outdoor waste"
+
+  - name: "Dubai Shopping Festival 2026"
+    start: "2026-01-02"
+    end: "2026-02-01"
+    multiplier: 1.5
+
+  - name: "GITEX Global 2025"
+    start: "2025-10-13"
+    end: "2025-10-17"
+    multiplier: 1.4
+    note: "DWTC — 180k+ visitors, high F&B and packaging waste"
+
+  - name: "Dubai Airshow 2025"
+    start: "2025-11-17"
+    end: "2025-11-21"
+    multiplier: 1.3
+    note: "DWC/Al Maktoum airport area"
+
+  - name: "Dubai Food Festival 2026"
+    start: "2026-02-26"
+    end: "2026-03-15"
+    multiplier: 1.5
+    note: "Outdoor dining, beach pop-ups, food trucks"
+
+  - name: "Dubai Marathon 2026"
+    date: "2026-01-11"
+    multiplier: 1.6
+    note: "City-wide road closures, high crowd density"
+
+  - name: "Dubai World Cup (Horse Racing) 2026"
+    date: "2026-03-28"
+    multiplier: 1.5
+    note: "Meydan Racecourse — 60k+ attendees"

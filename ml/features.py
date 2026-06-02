@@ -11,6 +11,7 @@ import pandas as pd
 from ml.schemas import FeatureVector
 
 if TYPE_CHECKING:
+    from exogenous.injector import ExogenousInjector
     from geospatial.db import GeospatialDB
     from ingestion.db import IngestionDB
 
@@ -76,6 +77,7 @@ async def build_feature_vector(
     ingestion_db: "IngestionDB",
     geo_db: "GeospatialDB",
     at_time: datetime | None = None,
+    injector: "ExogenousInjector | None" = None,
 ) -> FeatureVector:
     """Build a :class:`FeatureVector` for *bin_id* at *at_time*.
 
@@ -239,7 +241,20 @@ async def build_feature_vector(
     is_volatile = rolling_std_6h > 8.0
 
     # ------------------------------------------------------------------
-    # 12. Assemble and return FeatureVector
+    # 12. Exogenous features (Phase 5) — never crash build_feature_vector
+    # ------------------------------------------------------------------
+    from exogenous.injector import NEUTRAL_DEFAULTS
+
+    exo: dict = NEUTRAL_DEFAULTS.copy()
+    if injector is not None:
+        try:
+            zone_id = (entry.zone_id if entry is not None and hasattr(entry, "zone_id") and entry.zone_id else "")
+            exo = await injector.get_all_features(zone_id)
+        except Exception as exc:
+            logger.warning("ExogenousInjector failed for bin %s: %s — using neutral defaults", bin_id, exc)
+
+    # ------------------------------------------------------------------
+    # 13. Assemble and return FeatureVector
     # ------------------------------------------------------------------
     return FeatureVector(
         bin_id=bin_id,
@@ -268,6 +283,7 @@ async def build_feature_vector(
         spike_count_24h=spike_count_24h,
         fault_count_24h=fault_count_24h,
         is_volatile=is_volatile,
+        **exo,
     )
 
 
