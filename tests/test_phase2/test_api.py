@@ -155,3 +155,42 @@ def test_acknowledge_unknown_bin_returns_404():
 def test_acknowledge_returns_200_on_known_bin():
     r = client.post("/bins/BIN-0001/acknowledge")
     assert r.status_code == 200
+
+
+# ── additional coverage tests ─────────────────────────────────────────────────
+
+def test_get_history_limit_forwarded_to_db(mock_worker_state):
+    import ingestion.worker as worker_module
+    r = client.get("/bins/BIN-0001/history?limit=5")
+    assert r.status_code == 200
+    worker_module.db.get_bin_history.assert_called_once_with("BIN-0001", limit=5)
+
+
+def test_get_history_invalid_limit_returns_422():
+    r = client.get("/bins/BIN-0001/history?limit=-1")
+    assert r.status_code == 422
+
+
+def test_acknowledge_tipped_bin_resets_status():
+    import ingestion.worker as worker_module
+    # Set a bin to tipped
+    worker_module._bin_states["BIN-0001"] = make_state(
+        bin_id="BIN-0001", status="tipped", fill_pct=0.0
+    )
+    r = client.post("/bins/BIN-0001/acknowledge")
+    assert r.status_code == 200
+    data = r.json()
+    assert data["status"] == "operational"
+    assert data["acknowledged"] is True
+    # Verify DB was called
+    worker_module.db.upsert_bin_state.assert_called()
+
+
+def test_acknowledge_faulted_bin_resets_status():
+    import ingestion.worker as worker_module
+    worker_module._bin_states["BIN-0001"] = make_state(
+        bin_id="BIN-0001", status="sensor_fault"
+    )
+    r = client.post("/bins/BIN-0001/acknowledge")
+    assert r.status_code == 200
+    assert r.json()["status"] == "operational"

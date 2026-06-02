@@ -117,3 +117,35 @@ async def test_clearing_fault_removes_from_faulted_set(cache: BinStateCache):
     await cache.set_bin_state(make_state(status="operational"))
     members = await cache._redis.smembers("bins:faulted")
     assert b"BIN-0001" not in members
+
+
+# ── additional method coverage ─────────────────────────────────────────────────
+
+async def test_get_flagged_bins_returns_ids(cache: BinStateCache):
+    await cache.set_bin_state(make_state(bin_id="BIN-0001", flagged_for_collection=True))
+    await cache.set_bin_state(make_state(bin_id="BIN-0002", flagged_for_collection=False))
+    flagged = await cache.get_flagged_bins()
+    assert "BIN-0001" in flagged
+    assert "BIN-0002" not in flagged
+
+
+async def test_get_faulted_bins_returns_ids(cache: BinStateCache):
+    await cache.set_bin_state(make_state(bin_id="BIN-0001", status="sensor_fault"))
+    await cache.set_bin_state(make_state(bin_id="BIN-0002", status="operational"))
+    faulted = await cache.get_faulted_bins()
+    assert "BIN-0001" in faulted
+    assert "BIN-0002" not in faulted
+
+
+async def test_get_all_bin_states_returns_all(cache: BinStateCache):
+    await cache.set_bin_state(make_state(bin_id="BIN-0001", fill_pct=55.0))
+    await cache.set_bin_state(make_state(bin_id="BIN-0002", fill_pct=75.0))
+    all_states = await cache.get_all_bin_states()
+    ids = {s.bin_id for s in all_states}
+    assert "BIN-0001" in ids
+    assert "BIN-0002" in ids
+
+
+async def test_get_all_bin_states_empty_returns_empty_list(cache: BinStateCache):
+    all_states = await cache.get_all_bin_states()
+    assert all_states == []
