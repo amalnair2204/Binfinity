@@ -109,7 +109,8 @@ async def acknowledge_bin(bin_id: str) -> dict:
 
     # Clear tipped or sensor_fault — ops override
     new_state = state.model_copy(deep=True)
-    if new_state.status in ("tipped", "sensor_fault"):
+    changed = new_state.status in ("tipped", "sensor_fault")
+    if changed:
         new_state.status = "operational"
         new_state.consecutive_fault_ticks = 0
         w._bin_states[bin_id] = new_state
@@ -120,4 +121,4 @@ async def acknowledge_bin(bin_id: str) -> dict:
             await w.cache.set_bin_state(new_state)
         logger.info(f"Acknowledged {bin_id} — status reset to operational")
 
-    return {"bin_id": bin_id, "status": new_state.status, "acknowledged": True}
+    return {"bin_id": bin_id, "status": new_state.status, "acknowledged": changed}
