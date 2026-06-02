@@ -4,7 +4,6 @@ from __future__ import annotations
 from typing import Optional
 
 import redis.asyncio as aioredis
-from loguru import logger
 
 from ingestion.schemas import BinState
 
