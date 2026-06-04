@@ -1,0 +1,70 @@
+name: Deploy to Kubernetes
+
+on:
+  workflow_run:
+    workflows: [Build & Push Images]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Configure kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG }}" | base64 -d > ~/.kube/config
+
+      - name: Resolve image tag
+        id: tag
+        run: echo "sha=sha-$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Apply namespace and config
+        run: |
+          kubectl apply -f infra/k8s/namespace.yaml
+          kubectl apply -f infra/k8s/configmap.yaml
+          kubectl apply -f infra/k8s/secret.yaml
+
+      - name: Apply infrastructure
+        run: |
+          kubectl apply -f infra/k8s/timescaledb.yaml
+          kubectl apply -f infra/k8s/redis.yaml
+          kubectl rollout status statefulset/timescaledb -n binfinity --timeout=120s
+          kubectl rollout status statefulset/redis -n binfinity --timeout=60s
+
+      - name: Run migrations
+        run: |
+          kubectl run migrate-${{ steps.tag.outputs.sha }} \
+            --image=ghcr.io/${{ github.repository_owner }}/binfinity/python:${{ steps.tag.outputs.sha }} \
+            --restart=Never \
+            --namespace=binfinity \
+            --env="DATABASE_URL=postgresql://postgres:$(kubectl get secret binfinity-secret -n binfinity -o jsonpath='{.data.POSTGRES_PASSWORD}' | base64 -d)@timescaledb:5432/binfinity" \
+            --command -- python infra/migrate.py
+          kubectl wait pod/migrate-${{ steps.tag.outputs.sha }} --for=condition=Succeeded -n binfinity --timeout=120s
+          kubectl delete pod/migrate-${{ steps.tag.outputs.sha }} -n binfinity
+
+      - name: Deploy application services
+        run: |
+          REGISTRY=ghcr.io/${{ github.repository_owner }}/binfinity
+          TAG=${{ steps.tag.outputs.sha }}
+          for svc in emulator ingestion geospatial ml exogenous routing feedback; do
+            kubectl set image deployment/$svc $svc=$REGISTRY/python:$TAG -n binfinity || \
+            kubectl apply -f infra/k8s/$svc.yaml
+          done
+          kubectl set image deployment/dashboard dashboard=$REGISTRY/dashboard:$TAG -n binfinity || \
+          kubectl apply -f infra/k8s/dashboard.yaml
+          kubectl set image deployment/driver-app driver-app=$REGISTRY/driver-app:$TAG -n binfinity || \
+          kubectl apply -f infra/k8s/driver-app.yaml
+
+      - name: Wait for rollouts
+        run: |
+          for svc in emulator ingestion geospatial ml exogenous routing feedback dashboard driver-app; do
+            kubectl rollout status deployment/$svc -n binfinity --timeout=180s
+          done

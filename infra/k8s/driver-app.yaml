@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: driver-app
+  namespace: binfinity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: driver-app
+  template:
+    metadata:
+      labels:
+        app: driver-app
+    spec:
+      containers:
+        - name: driver-app
+          image: binfinity/driver-app:latest
+          ports:
+            - containerPort: 5173
+          env:
+            - name: VITE_API_BASE
+              value: "http://ingestion:8001"
+            - name: VITE_ROUTING_API
+              value: "http://routing:8005"
+            - name: VITE_WS_URL
+              value: "ws://routing:8005"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5173
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: driver-app
+  namespace: binfinity
+spec:
+  selector:
+    app: driver-app
+  ports:
+    - port: 5173
+      targetPort: 5173
+  type: LoadBalancer

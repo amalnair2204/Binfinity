@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geospatial
+  namespace: binfinity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: geospatial
+  template:
+    metadata:
+      labels:
+        app: geospatial
+    spec:
+      containers:
+        - name: geospatial
+          image: binfinity/python:latest
+          command: ["python", "-m", "geospatial.api"]
+          ports:
+            - containerPort: 8002
+          envFrom:
+            - configMapRef:
+                name: binfinity-config
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: binfinity-secret
+                  key: POSTGRES_PASSWORD
+            - name: DATABASE_URL
+              value: "postgresql://postgres:$(POSTGRES_PASSWORD)@timescaledb:5432/binfinity"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8002
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: geospatial
+  namespace: binfinity
+spec:
+  selector:
+    app: geospatial
+  ports:
+    - port: 8002
+      targetPort: 8002

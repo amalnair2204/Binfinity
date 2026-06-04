@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: routing
+  namespace: binfinity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: routing
+  template:
+    metadata:
+      labels:
+        app: routing
+    spec:
+      containers:
+        - name: routing
+          image: binfinity/python:latest
+          command: ["python", "-m", "routing.scheduler"]
+          ports:
+            - containerPort: 8005
+          envFrom:
+            - configMapRef:
+                name: binfinity-config
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: binfinity-secret
+                  key: POSTGRES_PASSWORD
+            - name: DATABASE_URL
+              value: "postgresql://postgres:$(POSTGRES_PASSWORD)@timescaledb:5432/binfinity"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8005
+            initialDelaySeconds: 15
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: routing
+  namespace: binfinity
+spec:
+  selector:
+    app: routing
+  ports:
+    - port: 8005
+      targetPort: 8005

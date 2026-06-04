@@ -1,0 +1,171 @@
+version: "3.8"
+
+x-python-common: &python-common
+  build:
+    context: ..
+    dockerfile: infra/docker/Dockerfile.python
+  environment:
+    DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-binfinity}@timescaledb:5432/binfinity
+    REDIS_URL: redis://redis:6379
+  depends_on:
+    timescaledb:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+  restart: unless-stopped
+
+services:
+  # ---------------------------------------------------------------------------
+  # Infrastructure
+  # ---------------------------------------------------------------------------
+
+  timescaledb:
+    image: timescale/timescaledb:latest-pg15
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-binfinity}
+      POSTGRES_DB: binfinity
+      POSTGRES_USER: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - timescale_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d binfinity"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ---------------------------------------------------------------------------
+  # Migration runner (one-shot)
+  # ---------------------------------------------------------------------------
+
+  migrate:
+    <<: *python-common
+    command: python infra/migrate.py
+    restart: "no"
+
+  # ---------------------------------------------------------------------------
+  # Application services
+  # ---------------------------------------------------------------------------
+
+  emulator:
+    <<: *python-common
+    command: python -m emulator.sim_engine
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-binfinity}@timescaledb:5432/binfinity
+      REDIS_URL: redis://redis:6379
+      CITY_LAT: ${CITY_LAT:-25.2048}
+      CITY_LNG: ${CITY_LNG:-55.2708}
+      BIN_COUNT: ${BIN_COUNT:-200}
+
+  ingestion:
+    <<: *python-common
+    command: python -m ingestion.worker
+    ports:
+      - "8001:8001"
+    depends_on:
+      timescaledb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      emulator:
+        condition: service_started
+
+  geospatial:
+    <<: *python-common
+    command: python -m geospatial.api
+    ports:
+      - "8002:8002"
+
+  ml:
+    <<: *python-common
+    command: python -m ml.api
+    ports:
+      - "8003:8003"
+    volumes:
+      - ml_models:/app/data/models
+    environment:
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-binfinity}@timescaledb:5432/binfinity
+      REDIS_URL: redis://redis:6379
+      MODEL_DIR: /app/data/models
+
+  exogenous:
+    <<: *python-common
+    command: python -m exogenous.api
+    ports:
+      - "8004:8004"
+    environment:
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-binfinity}@timescaledb:5432/binfinity
+      REDIS_URL: redis://redis:6379
+      CITY_NAME: ${CITY_NAME:-dubai}
+
+  routing:
+    <<: *python-common
+    command: python -m routing.scheduler
+    ports:
+      - "8005:8005"
+    environment:
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-binfinity}@timescaledb:5432/binfinity
+      REDIS_URL: redis://redis:6379
+      CITY_LAT: ${CITY_LAT:-25.2048}
+      CITY_LNG: ${CITY_LNG:-55.2708}
+      TRUCK_COUNT: ${TRUCK_COUNT:-5}
+      ROUTING_PORT: "8005"
+
+  feedback:
+    <<: *python-common
+    command: python -m feedback.scheduler
+    ports:
+      - "8006:8006"
+    volumes:
+      - ml_models:/app/data/models
+    environment:
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:-binfinity}@timescaledb:5432/binfinity
+      REDIS_URL: redis://redis:6379
+      MODEL_DIR: /app/data/models
+      FEEDBACK_PORT: "8006"
+
+  driver_app:
+    build:
+      context: ..
+      dockerfile: infra/docker/Dockerfile.driver-app
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_BASE: ${VITE_API_BASE:-http://localhost:8001}
+      VITE_ROUTING_API: ${VITE_ROUTING_API:-http://localhost:8005}
+      VITE_WS_URL: ${VITE_WS_URL:-ws://localhost:8005}
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: ..
+      dockerfile: infra/docker/Dockerfile.dashboard
+    ports:
+      - "3000:3001"
+    environment:
+      NEXT_PUBLIC_API_BASE: ${NEXT_PUBLIC_API_BASE:-http://localhost:8001}
+      NEXT_PUBLIC_ML_API: ${NEXT_PUBLIC_ML_API:-http://localhost:8003}
+      NEXT_PUBLIC_ROUTING_API: ${NEXT_PUBLIC_ROUTING_API:-http://localhost:8005}
+      NEXT_PUBLIC_CALIBRATION_API: ${NEXT_PUBLIC_CALIBRATION_API:-http://localhost:8006}
+      NEXT_PUBLIC_WS_URL: ${NEXT_PUBLIC_WS_URL:-ws://localhost:8001}
+    restart: unless-stopped
+
+volumes:
+  timescale_data:
+  redis_data:
+  ml_models:

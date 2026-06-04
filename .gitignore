@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+*.db
+venv/
+.venv/
+data/telemetry.db
+data/bin_states.json
+node_modules/

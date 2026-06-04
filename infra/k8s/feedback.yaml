@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feedback
+  namespace: binfinity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: feedback
+  template:
+    metadata:
+      labels:
+        app: feedback
+    spec:
+      containers:
+        - name: feedback
+          image: binfinity/python:latest
+          command: ["python", "-m", "feedback.scheduler"]
+          ports:
+            - containerPort: 8006
+          envFrom:
+            - configMapRef:
+                name: binfinity-config
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: binfinity-secret
+                  key: POSTGRES_PASSWORD
+            - name: DATABASE_URL
+              value: "postgresql://postgres:$(POSTGRES_PASSWORD)@timescaledb:5432/binfinity"
+          volumeMounts:
+            - name: ml-models
+              mountPath: /app/data/models
+          readinessProbe:
+            httpGet:
+              path: /calibration/health
+              port: 8006
+            initialDelaySeconds: 15
+            periodSeconds: 10
+      volumes:
+        - name: ml-models
+          persistentVolumeClaim:
+            claimName: ml-models-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: feedback
+  namespace: binfinity
+spec:
+  selector:
+    app: feedback
+  ports:
+    - port: 8006
+      targetPort: 8006

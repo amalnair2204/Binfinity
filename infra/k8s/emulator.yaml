@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emulator
+  namespace: binfinity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emulator
+  template:
+    metadata:
+      labels:
+        app: emulator
+    spec:
+      containers:
+        - name: emulator
+          image: binfinity/python:latest
+          command: ["python", "-m", "emulator.sim_engine"]
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: binfinity-config
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: binfinity-secret
+                  key: POSTGRES_PASSWORD
+            - name: DATABASE_URL
+              value: "postgresql://postgres:$(POSTGRES_PASSWORD)@timescaledb:5432/binfinity"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: emulator
+  namespace: binfinity
+spec:
+  selector:
+    app: emulator
+  ports:
+    - port: 8000
+      targetPort: 8000

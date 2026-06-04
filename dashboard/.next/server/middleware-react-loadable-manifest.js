@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST='{"components\\\\map\\\\BinfinityMap.jsx -> ./LeafletMap":{"id":22128,"files":["static/chunks/d0deef33.414f5e0355024f0b.js","static/chunks/993.fd06756c19a73c39.js","static/chunks/128.50ce8878b667e093.js"]}}';

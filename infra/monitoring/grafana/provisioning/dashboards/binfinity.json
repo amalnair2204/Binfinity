@@ -1,0 +1,114 @@
+{
+  "title": "Binfinity Operations",
+  "uid": "binfinity-ops",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "30s",
+  "time": { "from": "now-1h", "to": "now" },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Telemetry Packets/sec",
+      "type": "timeseries",
+      "gridPos": { "x": 0, "y": 0, "w": 8, "h": 8 },
+      "targets": [
+        {
+          "expr": "rate(binfinity_telemetry_packets_total[1m])",
+          "legendFormat": "{{zone}}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Bins Flagged for Collection",
+      "type": "stat",
+      "gridPos": { "x": 8, "y": 0, "w": 4, "h": 8 },
+      "targets": [
+        {
+          "expr": "binfinity_bins_flagged",
+          "legendFormat": "Flagged Bins"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Prediction MAE (hours)",
+      "type": "timeseries",
+      "gridPos": { "x": 12, "y": 0, "w": 8, "h": 8 },
+      "targets": [
+        {
+          "expr": "binfinity_prediction_mae_hours",
+          "legendFormat": "Fleet MAE"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "VRP Solve Time (seconds)",
+      "type": "timeseries",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, rate(binfinity_vrp_solve_seconds_bucket[5m]))",
+          "legendFormat": "p50"
+        },
+        {
+          "expr": "histogram_quantile(0.95, rate(binfinity_vrp_solve_seconds_bucket[5m]))",
+          "legendFormat": "p95"
+        },
+        {
+          "expr": "histogram_quantile(0.99, rate(binfinity_vrp_solve_seconds_bucket[5m]))",
+          "legendFormat": "p99"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Re-optimizations/hour by Trigger",
+      "type": "timeseries",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "rate(binfinity_reoptimizations_total[1h]) * 3600",
+          "legendFormat": "{{trigger_type}}"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Active Trucks",
+      "type": "stat",
+      "gridPos": { "x": 0, "y": 16, "w": 4, "h": 6 },
+      "targets": [
+        {
+          "expr": "binfinity_active_trucks",
+          "legendFormat": "Active Trucks"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Retrain Queue Depth",
+      "type": "timeseries",
+      "gridPos": { "x": 4, "y": 16, "w": 8, "h": 6 },
+      "targets": [
+        {
+          "expr": "binfinity_retrain_jobs_queued",
+          "legendFormat": "Queue Depth"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Feedback Events Processed/sec",
+      "type": "timeseries",
+      "gridPos": { "x": 12, "y": 16, "w": 12, "h": 6 },
+      "targets": [
+        {
+          "expr": "rate(binfinity_feedback_events_total[1m])",
+          "legendFormat": "Events/sec"
+        }
+      ]
+    }
+  ]
+}

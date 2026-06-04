@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml
+  namespace: binfinity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ml
+  template:
+    metadata:
+      labels:
+        app: ml
+    spec:
+      containers:
+        - name: ml
+          image: binfinity/python:latest
+          command: ["python", "-m", "ml.api"]
+          ports:
+            - containerPort: 8003
+          envFrom:
+            - configMapRef:
+                name: binfinity-config
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: binfinity-secret
+                  key: POSTGRES_PASSWORD
+            - name: DATABASE_URL
+              value: "postgresql://postgres:$(POSTGRES_PASSWORD)@timescaledb:5432/binfinity"
+          volumeMounts:
+            - name: ml-models
+              mountPath: /app/data/models
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8003
+            initialDelaySeconds: 15
+            periodSeconds: 10
+      volumes:
+        - name: ml-models
+          persistentVolumeClaim:
+            claimName: ml-models-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ml
+  namespace: binfinity
+spec:
+  selector:
+    app: ml
+  ports:
+    - port: 8003
+      targetPort: 8003
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ml-models-pvc
+  namespace: binfinity
+spec:
+  accessModes: ["ReadWriteMany"]
+  resources:
+    requests:
+      storage: 5Gi

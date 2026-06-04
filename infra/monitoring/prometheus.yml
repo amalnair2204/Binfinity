@@ -1,0 +1,39 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: binfinity-emulator
+    static_configs:
+      - targets: ["emulator:8000"]
+    metrics_path: /metrics
+
+  - job_name: binfinity-ingestion
+    static_configs:
+      - targets: ["ingestion:8001"]
+    metrics_path: /metrics
+
+  - job_name: binfinity-geospatial
+    static_configs:
+      - targets: ["geospatial:8002"]
+    metrics_path: /metrics
+
+  - job_name: binfinity-ml
+    static_configs:
+      - targets: ["ml:8003"]
+    metrics_path: /metrics
+
+  - job_name: binfinity-exogenous
+    static_configs:
+      - targets: ["exogenous:8004"]
+    metrics_path: /metrics
+
+  - job_name: binfinity-routing
+    static_configs:
+      - targets: ["routing:8005"]
+    metrics_path: /metrics
+
+  - job_name: binfinity-feedback
+    static_configs:
+      - targets: ["feedback:8006"]
+    metrics_path: /metrics

@@ -1,0 +1,2002 @@
+[
+  {
+    "bin_id": "BIN-0001",
+    "lat": 25.062303,
+    "lng": 55.203309,
+    "zone": "commercial",
+    "base_fill_rate": 2.45,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 44.2,
+    "battery_mv": 4146
+  },
+  {
+    "bin_id": "BIN-0002",
+    "lat": 25.21841,
+    "lng": 55.297948,
+    "zone": "park",
+    "base_fill_rate": 0.58,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 5.6,
+    "battery_mv": 3919
+  },
+  {
+    "bin_id": "BIN-0003",
+    "lat": 25.062761,
+    "lng": 55.180451,
+    "zone": "commercial",
+    "base_fill_rate": 3.3,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 32.7,
+    "battery_mv": 3912
+  },
+  {
+    "bin_id": "BIN-0004",
+    "lat": 25.138257,
+    "lng": 55.38159,
+    "zone": "commercial",
+    "base_fill_rate": 3.52,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 9.6,
+    "battery_mv": 4016
+  },
+  {
+    "bin_id": "BIN-0005",
+    "lat": 25.101444,
+    "lng": 55.407964,
+    "zone": "residential",
+    "base_fill_rate": 1.34,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 5.6,
+    "battery_mv": 3849
+  },
+  {
+    "bin_id": "BIN-0006",
+    "lat": 25.157987,
+    "lng": 55.200156,
+    "zone": "residential",
+    "base_fill_rate": 1.04,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 27.6,
+    "battery_mv": 3863
+  },
+  {
+    "bin_id": "BIN-0007",
+    "lat": 25.16836,
+    "lng": 55.286412,
+    "zone": "transit_hub",
+    "base_fill_rate": 4.57,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 37.1,
+    "battery_mv": 3985
+  },
+  {
+    "bin_id": "BIN-0008",
+    "lat": 25.266172,
+    "lng": 55.134547,
+    "zone": "commercial",
+    "base_fill_rate": 2.46,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 17.4,
+    "battery_mv": 3840
+  },
+  {
+    "bin_id": "BIN-0009",
+    "lat": 25.314745,
+    "lng": 55.234838,
+    "zone": "park",
+    "base_fill_rate": 1.63,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 50.0,
+    "battery_mv": 3883
+  },
+  {
+    "bin_id": "BIN-0010",
+    "lat": 25.117652,
+    "lng": 55.200893,
+    "zone": "residential",
+    "base_fill_rate": 1.94,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 38.9,
+    "battery_mv": 4111
+  },
+  {
+    "bin_id": "BIN-0011",
+    "lat": 25.215042,
+    "lng": 55.194243,
+    "zone": "commercial",
+    "base_fill_rate": 2.92,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 16.2,
+    "battery_mv": 4127
+  },
+  {
+    "bin_id": "BIN-0012",
+    "lat": 25.120685,
+    "lng": 55.218085,
+    "zone": "commercial",
+    "base_fill_rate": 3.54,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 3.4,
+    "battery_mv": 3816
+  },
+  {
+    "bin_id": "BIN-0013",
+    "lat": 25.175149,
+    "lng": 55.140657,
+    "zone": "park",
+    "base_fill_rate": 2.78,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 34.0,
+    "battery_mv": 4167
+  },
+  {
+    "bin_id": "BIN-0014",
+    "lat": 25.251432,
+    "lng": 55.23949,
+    "zone": "residential",
+    "base_fill_rate": 1.91,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 27.5,
+    "battery_mv": 3935
+  },
+  {
+    "bin_id": "BIN-0015",
+    "lat": 25.278297,
+    "lng": 55.282493,
+    "zone": "residential",
+    "base_fill_rate": 1.75,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 25.7,
+    "battery_mv": 4098
+  },
+  {
+    "bin_id": "BIN-0016",
+    "lat": 25.120596,
+    "lng": 55.420061,
+    "zone": "residential",
+    "base_fill_rate": 1.51,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 5.5,
+    "battery_mv": 3824
+  },
+  {
+    "bin_id": "BIN-0017",
+    "lat": 25.100652,
+    "lng": 55.168795,
+    "zone": "park",
+    "base_fill_rate": 2.2,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 35.8,
+    "battery_mv": 3997
+  },
+  {
+    "bin_id": "BIN-0018",
+    "lat": 25.353636,
+    "lng": 55.279534,
+    "zone": "residential",
+    "base_fill_rate": 1.97,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 51.6,
+    "battery_mv": 3805
+  },
+  {
+    "bin_id": "BIN-0019",
+    "lat": 25.089166,
+    "lng": 55.386237,
+    "zone": "commercial",
+    "base_fill_rate": 3.5,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 46.1,
+    "battery_mv": 3974
+  },
+  {
+    "bin_id": "BIN-0020",
+    "lat": 25.18523,
+    "lng": 55.256917,
+    "zone": "residential",
+    "base_fill_rate": 1.95,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 52.6,
+    "battery_mv": 3934
+  },
+  {
+    "bin_id": "BIN-0021",
+    "lat": 25.283389,
+    "lng": 55.273105,
+    "zone": "transit_hub",
+    "base_fill_rate": 2.77,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 37.5,
+    "battery_mv": 4127
+  },
+  {
+    "bin_id": "BIN-0022",
+    "lat": 25.114473,
+    "lng": 55.232974,
+    "zone": "commercial",
+    "base_fill_rate": 2.32,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 57.2,
+    "battery_mv": 4071
+  },
+  {
+    "bin_id": "BIN-0023",
+    "lat": 25.234483,
+    "lng": 55.267382,
+    "zone": "transit_hub",
+    "base_fill_rate": 2.78,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 21.8,
+    "battery_mv": 3957
+  },
+  {
+    "bin_id": "BIN-0024",
+    "lat": 25.127061,
+    "lng": 55.291007,
+    "zone": "residential",
+    "base_fill_rate": 1.08,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 43.9,
+    "battery_mv": 3835
+  },
+  {
+    "bin_id": "BIN-0025",
+    "lat": 25.214612,
+    "lng": 55.158528,
+    "zone": "transit_hub",
+    "base_fill_rate": 4.15,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 56.8,
+    "battery_mv": 3884
+  },
+  {
+    "bin_id": "BIN-0026",
+    "lat": 25.31653,
+    "lng": 55.247741,
+    "zone": "residential",
+    "base_fill_rate": 1.21,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 32.4,
+    "battery_mv": 4173
+  },
+  {
+    "bin_id": "BIN-0027",
+    "lat": 25.268685,
+    "lng": 55.240498,
+    "zone": "commercial",
+    "base_fill_rate": 3.34,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 22.4,
+    "battery_mv": 4064
+  },
+  {
+    "bin_id": "BIN-0028",
+    "lat": 25.129172,
+    "lng": 55.140008,
+    "zone": "commercial",
+    "base_fill_rate": 2.04,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 33.2,
+    "battery_mv": 4101
+  },
+  {
+    "bin_id": "BIN-0029",
+    "lat": 25.076098,
+    "lng": 55.310131,
+    "zone": "residential",
+    "base_fill_rate": 1.23,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 54.3,
+    "battery_mv": 3969
+  },
+  {
+    "bin_id": "BIN-0030",
+    "lat": 25.126201,
+    "lng": 55.321493,
+    "zone": "residential",
+    "base_fill_rate": 1.21,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 7.9,
+    "battery_mv": 4092
+  },
+  {
+    "bin_id": "BIN-0031",
+    "lat": 25.127699,
+    "lng": 55.262692,
+    "zone": "commercial",
+    "base_fill_rate": 2.81,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 5.7,
+    "battery_mv": 4137
+  },
+  {
+    "bin_id": "BIN-0032",
+    "lat": 25.181874,
+    "lng": 55.260907,
+    "zone": "commercial",
+    "base_fill_rate": 3.46,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 40.4,
+    "battery_mv": 4130
+  },
+  {
+    "bin_id": "BIN-0033",
+    "lat": 25.175586,
+    "lng": 55.222591,
+    "zone": "residential",
+    "base_fill_rate": 1.86,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 14.9,
+    "battery_mv": 3897
+  },
+  {
+    "bin_id": "BIN-0034",
+    "lat": 25.096855,
+    "lng": 55.175846,
+    "zone": "commercial",
+    "base_fill_rate": 2.93,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 52.5,
+    "battery_mv": 3838
+  },
+  {
+    "bin_id": "BIN-0035",
+    "lat": 25.313205,
+    "lng": 55.285898,
+    "zone": "commercial",
+    "base_fill_rate": 2.1,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 60.0,
+    "battery_mv": 3807
+  },
+  {
+    "bin_id": "BIN-0036",
+    "lat": 25.33271,
+    "lng": 55.375409,
+    "zone": "transit_hub",
+    "base_fill_rate": 2.92,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 29.1,
+    "battery_mv": 3909
+  },
+  {
+    "bin_id": "BIN-0037",
+    "lat": 25.325533,
+    "lng": 55.170191,
+    "zone": "park",
+    "base_fill_rate": 0.51,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 23.4,
+    "battery_mv": 4032
+  },
+  {
+    "bin_id": "BIN-0038",
+    "lat": 25.263777,
+    "lng": 55.339952,
+    "zone": "residential",
+    "base_fill_rate": 1.78,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 39.7,
+    "battery_mv": 4049
+  },
+  {
+    "bin_id": "BIN-0039",
+    "lat": 25.143812,
+    "lng": 55.411413,
+    "zone": "residential",
+    "base_fill_rate": 1.58,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 32.5,
+    "battery_mv": 4182
+  },
+  {
+    "bin_id": "BIN-0040",
+    "lat": 25.069843,
+    "lng": 55.263837,
+    "zone": "residential",
+    "base_fill_rate": 1.92,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 31.9,
+    "battery_mv": 3829
+  },
+  {
+    "bin_id": "BIN-0041",
+    "lat": 25.078833,
+    "lng": 55.176547,
+    "zone": "transit_hub",
+    "base_fill_rate": 3.99,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 40.5,
+    "battery_mv": 3920
+  },
+  {
+    "bin_id": "BIN-0042",
+    "lat": 25.337279,
+    "lng": 55.291703,
+    "zone": "commercial",
+    "base_fill_rate": 3.16,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 2.4,
+    "battery_mv": 3841
+  },
+  {
+    "bin_id": "BIN-0043",
+    "lat": 25.229902,
+    "lng": 55.277635,
+    "zone": "commercial",
+    "base_fill_rate": 3.87,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 12.3,
+    "battery_mv": 4166
+  },
+  {
+    "bin_id": "BIN-0044",
+    "lat": 25.134484,
+    "lng": 55.160063,
+    "zone": "residential",
+    "base_fill_rate": 1.65,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 27.4,
+    "battery_mv": 4184
+  },
+  {
+    "bin_id": "BIN-0045",
+    "lat": 25.057595,
+    "lng": 55.307148,
+    "zone": "transit_hub",
+    "base_fill_rate": 3.91,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 6.0,
+    "battery_mv": 4075
+  },
+  {
+    "bin_id": "BIN-0046",
+    "lat": 25.13436,
+    "lng": 55.400778,
+    "zone": "residential",
+    "base_fill_rate": 1.88,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 52.8,
+    "battery_mv": 3989
+  },
+  {
+    "bin_id": "BIN-0047",
+    "lat": 25.186255,
+    "lng": 55.283765,
+    "zone": "residential",
+    "base_fill_rate": 1.3,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 59.0,
+    "battery_mv": 4134
+  },
+  {
+    "bin_id": "BIN-0048",
+    "lat": 25.255159,
+    "lng": 55.287181,
+    "zone": "commercial",
+    "base_fill_rate": 3.86,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 6.2,
+    "battery_mv": 3868
+  },
+  {
+    "bin_id": "BIN-0049",
+    "lat": 25.321714,
+    "lng": 55.343525,
+    "zone": "residential",
+    "base_fill_rate": 1.16,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 16.9,
+    "battery_mv": 3907
+  },
+  {
+    "bin_id": "BIN-0050",
+    "lat": 25.115879,
+    "lng": 55.311071,
+    "zone": "park",
+    "base_fill_rate": 1.16,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 29.3,
+    "battery_mv": 3826
+  },
+  {
+    "bin_id": "BIN-0051",
+    "lat": 25.181873,
+    "lng": 55.203804,
+    "zone": "residential",
+    "base_fill_rate": 1.0,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 46.3,
+    "battery_mv": 4126
+  },
+  {
+    "bin_id": "BIN-0052",
+    "lat": 25.103275,
+    "lng": 55.253351,
+    "zone": "transit_hub",
+    "base_fill_rate": 4.26,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 33.7,
+    "battery_mv": 3857
+  },
+  {
+    "bin_id": "BIN-0053",
+    "lat": 25.319732,
+    "lng": 55.391979,
+    "zone": "residential",
+    "base_fill_rate": 1.55,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 50.1,
+    "battery_mv": 4098
+  },
+  {
+    "bin_id": "BIN-0054",
+    "lat": 25.183736,
+    "lng": 55.133349,
+    "zone": "commercial",
+    "base_fill_rate": 2.73,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 56.0,
+    "battery_mv": 3820
+  },
+  {
+    "bin_id": "BIN-0055",
+    "lat": 25.117823,
+    "lng": 55.195659,
+    "zone": "park",
+    "base_fill_rate": 0.76,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 46.8,
+    "battery_mv": 4008
+  },
+  {
+    "bin_id": "BIN-0056",
+    "lat": 25.279643,
+    "lng": 55.398529,
+    "zone": "transit_hub",
+    "base_fill_rate": 3.09,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 9.8,
+    "battery_mv": 3890
+  },
+  {
+    "bin_id": "BIN-0057",
+    "lat": 25.062236,
+    "lng": 55.341769,
+    "zone": "park",
+    "base_fill_rate": 1.33,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 55.8,
+    "battery_mv": 4142
+  },
+  {
+    "bin_id": "BIN-0058",
+    "lat": 25.298025,
+    "lng": 55.200842,
+    "zone": "park",
+    "base_fill_rate": 2.47,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 6.5,
+    "battery_mv": 3819
+  },
+  {
+    "bin_id": "BIN-0059",
+    "lat": 25.12153,
+    "lng": 55.365776,
+    "zone": "park",
+    "base_fill_rate": 1.65,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 18.3,
+    "battery_mv": 3916
+  },
+  {
+    "bin_id": "BIN-0060",
+    "lat": 25.25281,
+    "lng": 55.24034,
+    "zone": "residential",
+    "base_fill_rate": 1.28,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 4.2,
+    "battery_mv": 4195
+  },
+  {
+    "bin_id": "BIN-0061",
+    "lat": 25.247245,
+    "lng": 55.240704,
+    "zone": "residential",
+    "base_fill_rate": 1.98,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 32.2,
+    "battery_mv": 3814
+  },
+  {
+    "bin_id": "BIN-0062",
+    "lat": 25.34592,
+    "lng": 55.17437,
+    "zone": "residential",
+    "base_fill_rate": 1.96,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 15.9,
+    "battery_mv": 3855
+  },
+  {
+    "bin_id": "BIN-0063",
+    "lat": 25.158506,
+    "lng": 55.356728,
+    "zone": "commercial",
+    "base_fill_rate": 2.87,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 59.1,
+    "battery_mv": 3859
+  },
+  {
+    "bin_id": "BIN-0064",
+    "lat": 25.227776,
+    "lng": 55.197217,
+    "zone": "residential",
+    "base_fill_rate": 1.71,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 0.1,
+    "battery_mv": 4075
+  },
+  {
+    "bin_id": "BIN-0065",
+    "lat": 25.336879,
+    "lng": 55.341911,
+    "zone": "commercial",
+    "base_fill_rate": 2.39,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 25.9,
+    "battery_mv": 4140
+  },
+  {
+    "bin_id": "BIN-0066",
+    "lat": 25.241747,
+    "lng": 55.319816,
+    "zone": "transit_hub",
+    "base_fill_rate": 2.81,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 54.0,
+    "battery_mv": 4059
+  },
+  {
+    "bin_id": "BIN-0067",
+    "lat": 25.177318,
+    "lng": 55.24152,
+    "zone": "residential",
+    "base_fill_rate": 1.3,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 7.6,
+    "battery_mv": 4015
+  },
+  {
+    "bin_id": "BIN-0068",
+    "lat": 25.168544,
+    "lng": 55.34524,
+    "zone": "commercial",
+    "base_fill_rate": 2.35,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 34.1,
+    "battery_mv": 4007
+  },
+  {
+    "bin_id": "BIN-0069",
+    "lat": 25.054922,
+    "lng": 55.206874,
+    "zone": "commercial",
+    "base_fill_rate": 2.86,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 34.8,
+    "battery_mv": 4135
+  },
+  {
+    "bin_id": "BIN-0070",
+    "lat": 25.187336,
+    "lng": 55.323488,
+    "zone": "residential",
+    "base_fill_rate": 1.51,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 47.6,
+    "battery_mv": 4176
+  },
+  {
+    "bin_id": "BIN-0071",
+    "lat": 25.080239,
+    "lng": 55.275436,
+    "zone": "residential",
+    "base_fill_rate": 1.63,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 20.1,
+    "battery_mv": 4184
+  },
+  {
+    "bin_id": "BIN-0072",
+    "lat": 25.147926,
+    "lng": 55.362769,
+    "zone": "residential",
+    "base_fill_rate": 1.15,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 2.8,
+    "battery_mv": 4043
+  },
+  {
+    "bin_id": "BIN-0073",
+    "lat": 25.285347,
+    "lng": 55.257425,
+    "zone": "commercial",
+    "base_fill_rate": 3.77,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 34.5,
+    "battery_mv": 4167
+  },
+  {
+    "bin_id": "BIN-0074",
+    "lat": 25.203113,
+    "lng": 55.193995,
+    "zone": "commercial",
+    "base_fill_rate": 3.31,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 0.3,
+    "battery_mv": 4184
+  },
+  {
+    "bin_id": "BIN-0075",
+    "lat": 25.32044,
+    "lng": 55.354326,
+    "zone": "park",
+    "base_fill_rate": 1.05,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 48.2,
+    "battery_mv": 4156
+  },
+  {
+    "bin_id": "BIN-0076",
+    "lat": 25.069866,
+    "lng": 55.195559,
+    "zone": "commercial",
+    "base_fill_rate": 3.7,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 27.4,
+    "battery_mv": 4037
+  },
+  {
+    "bin_id": "BIN-0077",
+    "lat": 25.351168,
+    "lng": 55.299436,
+    "zone": "commercial",
+    "base_fill_rate": 3.9,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 53.5,
+    "battery_mv": 4113
+  },
+  {
+    "bin_id": "BIN-0078",
+    "lat": 25.322406,
+    "lng": 55.248822,
+    "zone": "park",
+    "base_fill_rate": 2.77,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 26.8,
+    "battery_mv": 3881
+  },
+  {
+    "bin_id": "BIN-0079",
+    "lat": 25.197202,
+    "lng": 55.198557,
+    "zone": "park",
+    "base_fill_rate": 1.12,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 38.3,
+    "battery_mv": 4192
+  },
+  {
+    "bin_id": "BIN-0080",
+    "lat": 25.200179,
+    "lng": 55.192574,
+    "zone": "park",
+    "base_fill_rate": 1.6,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 42.8,
+    "battery_mv": 3920
+  },
+  {
+    "bin_id": "BIN-0081",
+    "lat": 25.150713,
+    "lng": 55.282846,
+    "zone": "residential",
+    "base_fill_rate": 1.14,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 13.9,
+    "battery_mv": 4155
+  },
+  {
+    "bin_id": "BIN-0082",
+    "lat": 25.118986,
+    "lng": 55.24526,
+    "zone": "residential",
+    "base_fill_rate": 1.33,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 28.0,
+    "battery_mv": 3831
+  },
+  {
+    "bin_id": "BIN-0083",
+    "lat": 25.180843,
+    "lng": 55.392252,
+    "zone": "residential",
+    "base_fill_rate": 1.58,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 41.7,
+    "battery_mv": 4191
+  },
+  {
+    "bin_id": "BIN-0084",
+    "lat": 25.197894,
+    "lng": 55.403622,
+    "zone": "commercial",
+    "base_fill_rate": 2.6,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 23.4,
+    "battery_mv": 4014
+  },
+  {
+    "bin_id": "BIN-0085",
+    "lat": 25.27519,
+    "lng": 55.36076,
+    "zone": "commercial",
+    "base_fill_rate": 3.8,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 29.3,
+    "battery_mv": 3939
+  },
+  {
+    "bin_id": "BIN-0086",
+    "lat": 25.063507,
+    "lng": 55.221639,
+    "zone": "commercial",
+    "base_fill_rate": 3.36,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 24.3,
+    "battery_mv": 3884
+  },
+  {
+    "bin_id": "BIN-0087",
+    "lat": 25.330662,
+    "lng": 55.415017,
+    "zone": "park",
+    "base_fill_rate": 1.84,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 54.4,
+    "battery_mv": 4103
+  },
+  {
+    "bin_id": "BIN-0088",
+    "lat": 25.062931,
+    "lng": 55.313625,
+    "zone": "commercial",
+    "base_fill_rate": 2.27,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 27.7,
+    "battery_mv": 3825
+  },
+  {
+    "bin_id": "BIN-0089",
+    "lat": 25.153006,
+    "lng": 55.25721,
+    "zone": "residential",
+    "base_fill_rate": 1.34,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 52.8,
+    "battery_mv": 3942
+  },
+  {
+    "bin_id": "BIN-0090",
+    "lat": 25.304377,
+    "lng": 55.196481,
+    "zone": "park",
+    "base_fill_rate": 0.7,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 1.2,
+    "battery_mv": 4076
+  },
+  {
+    "bin_id": "BIN-0091",
+    "lat": 25.340376,
+    "lng": 55.188067,
+    "zone": "residential",
+    "base_fill_rate": 1.07,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 57.4,
+    "battery_mv": 3820
+  },
+  {
+    "bin_id": "BIN-0092",
+    "lat": 25.339684,
+    "lng": 55.180608,
+    "zone": "park",
+    "base_fill_rate": 0.55,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 9.1,
+    "battery_mv": 3864
+  },
+  {
+    "bin_id": "BIN-0093",
+    "lat": 25.089117,
+    "lng": 55.405127,
+    "zone": "commercial",
+    "base_fill_rate": 2.93,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 15.4,
+    "battery_mv": 3988
+  },
+  {
+    "bin_id": "BIN-0094",
+    "lat": 25.236974,
+    "lng": 55.345178,
+    "zone": "residential",
+    "base_fill_rate": 1.11,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 49.2,
+    "battery_mv": 3959
+  },
+  {
+    "bin_id": "BIN-0095",
+    "lat": 25.062504,
+    "lng": 55.214387,
+    "zone": "residential",
+    "base_fill_rate": 1.68,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 57.5,
+    "battery_mv": 4003
+  },
+  {
+    "bin_id": "BIN-0096",
+    "lat": 25.114299,
+    "lng": 55.298429,
+    "zone": "transit_hub",
+    "base_fill_rate": 4.58,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 14.6,
+    "battery_mv": 4156
+  },
+  {
+    "bin_id": "BIN-0097",
+    "lat": 25.309888,
+    "lng": 55.300923,
+    "zone": "park",
+    "base_fill_rate": 0.8,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 59.0,
+    "battery_mv": 4200
+  },
+  {
+    "bin_id": "BIN-0098",
+    "lat": 25.214624,
+    "lng": 55.319256,
+    "zone": "residential",
+    "base_fill_rate": 1.07,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 38.9,
+    "battery_mv": 3806
+  },
+  {
+    "bin_id": "BIN-0099",
+    "lat": 25.301499,
+    "lng": 55.152462,
+    "zone": "park",
+    "base_fill_rate": 2.9,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 38.1,
+    "battery_mv": 4035
+  },
+  {
+    "bin_id": "BIN-0100",
+    "lat": 25.185446,
+    "lng": 55.340939,
+    "zone": "park",
+    "base_fill_rate": 2.91,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 16.2,
+    "battery_mv": 4075
+  },
+  {
+    "bin_id": "BIN-0101",
+    "lat": 25.194262,
+    "lng": 55.36852,
+    "zone": "park",
+    "base_fill_rate": 1.98,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 19.3,
+    "battery_mv": 3925
+  },
+  {
+    "bin_id": "BIN-0102",
+    "lat": 25.080799,
+    "lng": 55.385289,
+    "zone": "park",
+    "base_fill_rate": 1.11,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 27.9,
+    "battery_mv": 4112
+  },
+  {
+    "bin_id": "BIN-0103",
+    "lat": 25.155719,
+    "lng": 55.269092,
+    "zone": "commercial",
+    "base_fill_rate": 2.65,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 29.3,
+    "battery_mv": 3981
+  },
+  {
+    "bin_id": "BIN-0104",
+    "lat": 25.156902,
+    "lng": 55.384896,
+    "zone": "park",
+    "base_fill_rate": 2.25,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 16.6,
+    "battery_mv": 3805
+  },
+  {
+    "bin_id": "BIN-0105",
+    "lat": 25.112117,
+    "lng": 55.193207,
+    "zone": "commercial",
+    "base_fill_rate": 2.81,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 33.3,
+    "battery_mv": 3923
+  },
+  {
+    "bin_id": "BIN-0106",
+    "lat": 25.248571,
+    "lng": 55.268046,
+    "zone": "commercial",
+    "base_fill_rate": 3.59,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 5.6,
+    "battery_mv": 3913
+  },
+  {
+    "bin_id": "BIN-0107",
+    "lat": 25.127792,
+    "lng": 55.319988,
+    "zone": "commercial",
+    "base_fill_rate": 2.74,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 33.2,
+    "battery_mv": 3976
+  },
+  {
+    "bin_id": "BIN-0108",
+    "lat": 25.278581,
+    "lng": 55.220037,
+    "zone": "commercial",
+    "base_fill_rate": 3.41,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 16.3,
+    "battery_mv": 3928
+  },
+  {
+    "bin_id": "BIN-0109",
+    "lat": 25.271185,
+    "lng": 55.215464,
+    "zone": "residential",
+    "base_fill_rate": 1.74,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 57.1,
+    "battery_mv": 4153
+  },
+  {
+    "bin_id": "BIN-0110",
+    "lat": 25.119715,
+    "lng": 55.26606,
+    "zone": "residential",
+    "base_fill_rate": 1.72,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 58.6,
+    "battery_mv": 4068
+  },
+  {
+    "bin_id": "BIN-0111",
+    "lat": 25.348953,
+    "lng": 55.370589,
+    "zone": "commercial",
+    "base_fill_rate": 2.59,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 21.7,
+    "battery_mv": 3954
+  },
+  {
+    "bin_id": "BIN-0112",
+    "lat": 25.215041,
+    "lng": 55.203093,
+    "zone": "residential",
+    "base_fill_rate": 1.97,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 33.2,
+    "battery_mv": 4157
+  },
+  {
+    "bin_id": "BIN-0113",
+    "lat": 25.246161,
+    "lng": 55.346638,
+    "zone": "transit_hub",
+    "base_fill_rate": 2.76,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 0.7,
+    "battery_mv": 3945
+  },
+  {
+    "bin_id": "BIN-0114",
+    "lat": 25.186941,
+    "lng": 55.176109,
+    "zone": "commercial",
+    "base_fill_rate": 2.1,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 56.5,
+    "battery_mv": 4044
+  },
+  {
+    "bin_id": "BIN-0115",
+    "lat": 25.074403,
+    "lng": 55.268324,
+    "zone": "residential",
+    "base_fill_rate": 1.58,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 41.2,
+    "battery_mv": 3877
+  },
+  {
+    "bin_id": "BIN-0116",
+    "lat": 25.223652,
+    "lng": 55.211951,
+    "zone": "residential",
+    "base_fill_rate": 1.99,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 7.1,
+    "battery_mv": 4191
+  },
+  {
+    "bin_id": "BIN-0117",
+    "lat": 25.233638,
+    "lng": 55.306326,
+    "zone": "commercial",
+    "base_fill_rate": 3.55,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 22.8,
+    "battery_mv": 4026
+  },
+  {
+    "bin_id": "BIN-0118",
+    "lat": 25.231358,
+    "lng": 55.249449,
+    "zone": "residential",
+    "base_fill_rate": 1.57,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 3.6,
+    "battery_mv": 4178
+  },
+  {
+    "bin_id": "BIN-0119",
+    "lat": 25.283621,
+    "lng": 55.308455,
+    "zone": "residential",
+    "base_fill_rate": 1.26,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 4.9,
+    "battery_mv": 3922
+  },
+  {
+    "bin_id": "BIN-0120",
+    "lat": 25.077319,
+    "lng": 55.121603,
+    "zone": "residential",
+    "base_fill_rate": 1.45,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 35.6,
+    "battery_mv": 3949
+  },
+  {
+    "bin_id": "BIN-0121",
+    "lat": 25.141231,
+    "lng": 55.205616,
+    "zone": "residential",
+    "base_fill_rate": 1.86,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 4.3,
+    "battery_mv": 3919
+  },
+  {
+    "bin_id": "BIN-0122",
+    "lat": 25.291148,
+    "lng": 55.308317,
+    "zone": "transit_hub",
+    "base_fill_rate": 4.15,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 56.0,
+    "battery_mv": 4017
+  },
+  {
+    "bin_id": "BIN-0123",
+    "lat": 25.122243,
+    "lng": 55.165497,
+    "zone": "residential",
+    "base_fill_rate": 1.27,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 8.5,
+    "battery_mv": 3830
+  },
+  {
+    "bin_id": "BIN-0124",
+    "lat": 25.147084,
+    "lng": 55.345487,
+    "zone": "residential",
+    "base_fill_rate": 1.57,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 17.3,
+    "battery_mv": 3863
+  },
+  {
+    "bin_id": "BIN-0125",
+    "lat": 25.146027,
+    "lng": 55.241553,
+    "zone": "commercial",
+    "base_fill_rate": 2.54,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 32.4,
+    "battery_mv": 4024
+  },
+  {
+    "bin_id": "BIN-0126",
+    "lat": 25.066758,
+    "lng": 55.250409,
+    "zone": "residential",
+    "base_fill_rate": 1.32,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 15.0,
+    "battery_mv": 3846
+  },
+  {
+    "bin_id": "BIN-0127",
+    "lat": 25.25709,
+    "lng": 55.378955,
+    "zone": "residential",
+    "base_fill_rate": 1.59,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 1.2,
+    "battery_mv": 4191
+  },
+  {
+    "bin_id": "BIN-0128",
+    "lat": 25.135653,
+    "lng": 55.13287,
+    "zone": "commercial",
+    "base_fill_rate": 3.51,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 28.2,
+    "battery_mv": 4133
+  },
+  {
+    "bin_id": "BIN-0129",
+    "lat": 25.138247,
+    "lng": 55.419884,
+    "zone": "commercial",
+    "base_fill_rate": 2.87,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 48.9,
+    "battery_mv": 3846
+  },
+  {
+    "bin_id": "BIN-0130",
+    "lat": 25.177304,
+    "lng": 55.217117,
+    "zone": "commercial",
+    "base_fill_rate": 2.21,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 9.6,
+    "battery_mv": 4010
+  },
+  {
+    "bin_id": "BIN-0131",
+    "lat": 25.141265,
+    "lng": 55.404358,
+    "zone": "commercial",
+    "base_fill_rate": 3.63,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 33.0,
+    "battery_mv": 4032
+  },
+  {
+    "bin_id": "BIN-0132",
+    "lat": 25.13052,
+    "lng": 55.155576,
+    "zone": "residential",
+    "base_fill_rate": 1.77,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 51.9,
+    "battery_mv": 3800
+  },
+  {
+    "bin_id": "BIN-0133",
+    "lat": 25.217578,
+    "lng": 55.244774,
+    "zone": "commercial",
+    "base_fill_rate": 2.38,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 21.7,
+    "battery_mv": 4187
+  },
+  {
+    "bin_id": "BIN-0134",
+    "lat": 25.187412,
+    "lng": 55.136284,
+    "zone": "commercial",
+    "base_fill_rate": 2.53,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 7.9,
+    "battery_mv": 3947
+  },
+  {
+    "bin_id": "BIN-0135",
+    "lat": 25.264275,
+    "lng": 55.157228,
+    "zone": "commercial",
+    "base_fill_rate": 3.95,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 36.5,
+    "battery_mv": 3922
+  },
+  {
+    "bin_id": "BIN-0136",
+    "lat": 25.148025,
+    "lng": 55.124902,
+    "zone": "park",
+    "base_fill_rate": 1.52,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 13.5,
+    "battery_mv": 3858
+  },
+  {
+    "bin_id": "BIN-0137",
+    "lat": 25.09004,
+    "lng": 55.370443,
+    "zone": "commercial",
+    "base_fill_rate": 3.0,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 43.0,
+    "battery_mv": 4060
+  },
+  {
+    "bin_id": "BIN-0138",
+    "lat": 25.179447,
+    "lng": 55.26555,
+    "zone": "park",
+    "base_fill_rate": 1.68,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 27.4,
+    "battery_mv": 3874
+  },
+  {
+    "bin_id": "BIN-0139",
+    "lat": 25.33136,
+    "lng": 55.273272,
+    "zone": "residential",
+    "base_fill_rate": 1.88,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 51.8,
+    "battery_mv": 3941
+  },
+  {
+    "bin_id": "BIN-0140",
+    "lat": 25.311124,
+    "lng": 55.222763,
+    "zone": "park",
+    "base_fill_rate": 2.47,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 16.0,
+    "battery_mv": 3801
+  },
+  {
+    "bin_id": "BIN-0141",
+    "lat": 25.144367,
+    "lng": 55.296881,
+    "zone": "residential",
+    "base_fill_rate": 2.0,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 29.4,
+    "battery_mv": 3876
+  },
+  {
+    "bin_id": "BIN-0142",
+    "lat": 25.200102,
+    "lng": 55.220532,
+    "zone": "commercial",
+    "base_fill_rate": 3.53,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 22.6,
+    "battery_mv": 3964
+  },
+  {
+    "bin_id": "BIN-0143",
+    "lat": 25.349032,
+    "lng": 55.192442,
+    "zone": "park",
+    "base_fill_rate": 1.46,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 51.4,
+    "battery_mv": 4010
+  },
+  {
+    "bin_id": "BIN-0144",
+    "lat": 25.278212,
+    "lng": 55.332368,
+    "zone": "residential",
+    "base_fill_rate": 1.81,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 23.2,
+    "battery_mv": 4139
+  },
+  {
+    "bin_id": "BIN-0145",
+    "lat": 25.250406,
+    "lng": 55.166432,
+    "zone": "park",
+    "base_fill_rate": 2.91,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 7.6,
+    "battery_mv": 4102
+  },
+  {
+    "bin_id": "BIN-0146",
+    "lat": 25.084909,
+    "lng": 55.374312,
+    "zone": "residential",
+    "base_fill_rate": 1.1,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 54.6,
+    "battery_mv": 3807
+  },
+  {
+    "bin_id": "BIN-0147",
+    "lat": 25.177794,
+    "lng": 55.317234,
+    "zone": "park",
+    "base_fill_rate": 0.89,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 28.2,
+    "battery_mv": 3935
+  },
+  {
+    "bin_id": "BIN-0148",
+    "lat": 25.262611,
+    "lng": 55.315751,
+    "zone": "residential",
+    "base_fill_rate": 1.85,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 51.1,
+    "battery_mv": 4073
+  },
+  {
+    "bin_id": "BIN-0149",
+    "lat": 25.149798,
+    "lng": 55.336415,
+    "zone": "residential",
+    "base_fill_rate": 1.76,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 52.3,
+    "battery_mv": 3818
+  },
+  {
+    "bin_id": "BIN-0150",
+    "lat": 25.125231,
+    "lng": 55.32612,
+    "zone": "commercial",
+    "base_fill_rate": 2.57,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 13.6,
+    "battery_mv": 3846
+  },
+  {
+    "bin_id": "BIN-0151",
+    "lat": 25.084333,
+    "lng": 55.310924,
+    "zone": "commercial",
+    "base_fill_rate": 3.75,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 26.6,
+    "battery_mv": 4155
+  },
+  {
+    "bin_id": "BIN-0152",
+    "lat": 25.063484,
+    "lng": 55.218112,
+    "zone": "residential",
+    "base_fill_rate": 1.06,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 21.5,
+    "battery_mv": 4020
+  },
+  {
+    "bin_id": "BIN-0153",
+    "lat": 25.21415,
+    "lng": 55.290578,
+    "zone": "residential",
+    "base_fill_rate": 1.79,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 10.2,
+    "battery_mv": 3840
+  },
+  {
+    "bin_id": "BIN-0154",
+    "lat": 25.169563,
+    "lng": 55.32574,
+    "zone": "commercial",
+    "base_fill_rate": 3.0,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 35.0,
+    "battery_mv": 3918
+  },
+  {
+    "bin_id": "BIN-0155",
+    "lat": 25.130993,
+    "lng": 55.197398,
+    "zone": "commercial",
+    "base_fill_rate": 2.02,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 48.3,
+    "battery_mv": 3947
+  },
+  {
+    "bin_id": "BIN-0156",
+    "lat": 25.102193,
+    "lng": 55.253319,
+    "zone": "commercial",
+    "base_fill_rate": 2.69,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 35.3,
+    "battery_mv": 4127
+  },
+  {
+    "bin_id": "BIN-0157",
+    "lat": 25.261894,
+    "lng": 55.257851,
+    "zone": "transit_hub",
+    "base_fill_rate": 3.26,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 60.0,
+    "battery_mv": 4047
+  },
+  {
+    "bin_id": "BIN-0158",
+    "lat": 25.169209,
+    "lng": 55.228488,
+    "zone": "residential",
+    "base_fill_rate": 1.3,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 42.0,
+    "battery_mv": 3811
+  },
+  {
+    "bin_id": "BIN-0159",
+    "lat": 25.252269,
+    "lng": 55.203144,
+    "zone": "transit_hub",
+    "base_fill_rate": 3.91,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 41.1,
+    "battery_mv": 4181
+  },
+  {
+    "bin_id": "BIN-0160",
+    "lat": 25.327985,
+    "lng": 55.344352,
+    "zone": "transit_hub",
+    "base_fill_rate": 4.58,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 54.2,
+    "battery_mv": 4197
+  },
+  {
+    "bin_id": "BIN-0161",
+    "lat": 25.236919,
+    "lng": 55.226496,
+    "zone": "park",
+    "base_fill_rate": 2.09,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 37.3,
+    "battery_mv": 4147
+  },
+  {
+    "bin_id": "BIN-0162",
+    "lat": 25.285041,
+    "lng": 55.325057,
+    "zone": "park",
+    "base_fill_rate": 0.84,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 5.8,
+    "battery_mv": 4121
+  },
+  {
+    "bin_id": "BIN-0163",
+    "lat": 25.14748,
+    "lng": 55.253047,
+    "zone": "commercial",
+    "base_fill_rate": 3.16,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 43.9,
+    "battery_mv": 3846
+  },
+  {
+    "bin_id": "BIN-0164",
+    "lat": 25.152816,
+    "lng": 55.245451,
+    "zone": "transit_hub",
+    "base_fill_rate": 3.0,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 47.2,
+    "battery_mv": 3987
+  },
+  {
+    "bin_id": "BIN-0165",
+    "lat": 25.328846,
+    "lng": 55.369942,
+    "zone": "commercial",
+    "base_fill_rate": 2.51,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 49.5,
+    "battery_mv": 4046
+  },
+  {
+    "bin_id": "BIN-0166",
+    "lat": 25.143342,
+    "lng": 55.381919,
+    "zone": "transit_hub",
+    "base_fill_rate": 4.51,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 28.1,
+    "battery_mv": 3838
+  },
+  {
+    "bin_id": "BIN-0167",
+    "lat": 25.34475,
+    "lng": 55.378842,
+    "zone": "residential",
+    "base_fill_rate": 1.72,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 58.8,
+    "battery_mv": 4085
+  },
+  {
+    "bin_id": "BIN-0168",
+    "lat": 25.292005,
+    "lng": 55.124976,
+    "zone": "residential",
+    "base_fill_rate": 1.54,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 27.3,
+    "battery_mv": 4144
+  },
+  {
+    "bin_id": "BIN-0169",
+    "lat": 25.133448,
+    "lng": 55.235108,
+    "zone": "park",
+    "base_fill_rate": 2.1,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 22.3,
+    "battery_mv": 4145
+  },
+  {
+    "bin_id": "BIN-0170",
+    "lat": 25.062307,
+    "lng": 55.38607,
+    "zone": "residential",
+    "base_fill_rate": 1.56,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 54.9,
+    "battery_mv": 3913
+  },
+  {
+    "bin_id": "BIN-0171",
+    "lat": 25.245421,
+    "lng": 55.26008,
+    "zone": "commercial",
+    "base_fill_rate": 3.4,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 39.0,
+    "battery_mv": 3859
+  },
+  {
+    "bin_id": "BIN-0172",
+    "lat": 25.338678,
+    "lng": 55.212109,
+    "zone": "residential",
+    "base_fill_rate": 1.49,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 5.8,
+    "battery_mv": 4075
+  },
+  {
+    "bin_id": "BIN-0173",
+    "lat": 25.190893,
+    "lng": 55.321946,
+    "zone": "residential",
+    "base_fill_rate": 1.74,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 56.8,
+    "battery_mv": 4014
+  },
+  {
+    "bin_id": "BIN-0174",
+    "lat": 25.27278,
+    "lng": 55.386424,
+    "zone": "commercial",
+    "base_fill_rate": 3.31,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 50.0,
+    "battery_mv": 4115
+  },
+  {
+    "bin_id": "BIN-0175",
+    "lat": 25.340256,
+    "lng": 55.130615,
+    "zone": "commercial",
+    "base_fill_rate": 2.74,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 26.6,
+    "battery_mv": 3920
+  },
+  {
+    "bin_id": "BIN-0176",
+    "lat": 25.084606,
+    "lng": 55.326504,
+    "zone": "park",
+    "base_fill_rate": 1.86,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 58.7,
+    "battery_mv": 3983
+  },
+  {
+    "bin_id": "BIN-0177",
+    "lat": 25.137564,
+    "lng": 55.411262,
+    "zone": "residential",
+    "base_fill_rate": 1.95,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 49.5,
+    "battery_mv": 3846
+  },
+  {
+    "bin_id": "BIN-0178",
+    "lat": 25.247311,
+    "lng": 55.299944,
+    "zone": "commercial",
+    "base_fill_rate": 2.04,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 47.2,
+    "battery_mv": 3924
+  },
+  {
+    "bin_id": "BIN-0179",
+    "lat": 25.290893,
+    "lng": 55.182362,
+    "zone": "transit_hub",
+    "base_fill_rate": 4.57,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 33.3,
+    "battery_mv": 4100
+  },
+  {
+    "bin_id": "BIN-0180",
+    "lat": 25.315709,
+    "lng": 55.219368,
+    "zone": "residential",
+    "base_fill_rate": 1.15,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 54.0,
+    "battery_mv": 3801
+  },
+  {
+    "bin_id": "BIN-0181",
+    "lat": 25.350008,
+    "lng": 55.417058,
+    "zone": "residential",
+    "base_fill_rate": 1.54,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 47.9,
+    "battery_mv": 3856
+  },
+  {
+    "bin_id": "BIN-0182",
+    "lat": 25.062534,
+    "lng": 55.125258,
+    "zone": "commercial",
+    "base_fill_rate": 3.58,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 14.3,
+    "battery_mv": 3965
+  },
+  {
+    "bin_id": "BIN-0183",
+    "lat": 25.13441,
+    "lng": 55.158828,
+    "zone": "residential",
+    "base_fill_rate": 1.42,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 6.8,
+    "battery_mv": 3832
+  },
+  {
+    "bin_id": "BIN-0184",
+    "lat": 25.288205,
+    "lng": 55.274771,
+    "zone": "commercial",
+    "base_fill_rate": 2.22,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 30.2,
+    "battery_mv": 4114
+  },
+  {
+    "bin_id": "BIN-0185",
+    "lat": 25.289768,
+    "lng": 55.380894,
+    "zone": "residential",
+    "base_fill_rate": 1.52,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 27.5,
+    "battery_mv": 3815
+  },
+  {
+    "bin_id": "BIN-0186",
+    "lat": 25.198495,
+    "lng": 55.241285,
+    "zone": "residential",
+    "base_fill_rate": 1.69,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 29.4,
+    "battery_mv": 4027
+  },
+  {
+    "bin_id": "BIN-0187",
+    "lat": 25.079037,
+    "lng": 55.303289,
+    "zone": "residential",
+    "base_fill_rate": 1.07,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 16.5,
+    "battery_mv": 4124
+  },
+  {
+    "bin_id": "BIN-0188",
+    "lat": 25.268446,
+    "lng": 55.235071,
+    "zone": "commercial",
+    "base_fill_rate": 3.19,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 17.7,
+    "battery_mv": 4058
+  },
+  {
+    "bin_id": "BIN-0189",
+    "lat": 25.084554,
+    "lng": 55.331334,
+    "zone": "commercial",
+    "base_fill_rate": 3.71,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 39.1,
+    "battery_mv": 4193
+  },
+  {
+    "bin_id": "BIN-0190",
+    "lat": 25.314448,
+    "lng": 55.249821,
+    "zone": "commercial",
+    "base_fill_rate": 3.78,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 24.8,
+    "battery_mv": 4032
+  },
+  {
+    "bin_id": "BIN-0191",
+    "lat": 25.273684,
+    "lng": 55.214565,
+    "zone": "residential",
+    "base_fill_rate": 1.31,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 15.3,
+    "battery_mv": 3878
+  },
+  {
+    "bin_id": "BIN-0192",
+    "lat": 25.19708,
+    "lng": 55.148167,
+    "zone": "commercial",
+    "base_fill_rate": 2.17,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 25.9,
+    "battery_mv": 4181
+  },
+  {
+    "bin_id": "BIN-0193",
+    "lat": 25.298331,
+    "lng": 55.287711,
+    "zone": "park",
+    "base_fill_rate": 1.97,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 33.7,
+    "battery_mv": 3968
+  },
+  {
+    "bin_id": "BIN-0194",
+    "lat": 25.178043,
+    "lng": 55.382882,
+    "zone": "commercial",
+    "base_fill_rate": 3.88,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 25.4,
+    "battery_mv": 4169
+  },
+  {
+    "bin_id": "BIN-0195",
+    "lat": 25.141089,
+    "lng": 55.214535,
+    "zone": "residential",
+    "base_fill_rate": 1.1,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 30.4,
+    "battery_mv": 3879
+  },
+  {
+    "bin_id": "BIN-0196",
+    "lat": 25.122073,
+    "lng": 55.153266,
+    "zone": "commercial",
+    "base_fill_rate": 3.69,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 22.1,
+    "battery_mv": 4190
+  },
+  {
+    "bin_id": "BIN-0197",
+    "lat": 25.122648,
+    "lng": 55.249534,
+    "zone": "residential",
+    "base_fill_rate": 1.56,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 46.0,
+    "battery_mv": 4118
+  },
+  {
+    "bin_id": "BIN-0198",
+    "lat": 25.24761,
+    "lng": 55.128676,
+    "zone": "commercial",
+    "base_fill_rate": 3.86,
+    "capacity_liters": 240.0,
+    "current_fill_pct": 49.8,
+    "battery_mv": 3936
+  },
+  {
+    "bin_id": "BIN-0199",
+    "lat": 25.136781,
+    "lng": 55.349523,
+    "zone": "residential",
+    "base_fill_rate": 1.92,
+    "capacity_liters": 120.0,
+    "current_fill_pct": 21.1,
+    "battery_mv": 3892
+  },
+  {
+    "bin_id": "BIN-0200",
+    "lat": 25.224696,
+    "lng": 55.241035,
+    "zone": "park",
+    "base_fill_rate": 0.85,
+    "capacity_liters": 80.0,
+    "current_fill_pct": 38.0,
+    "battery_mv": 3815
+  }
+]
